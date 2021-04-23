@@ -1,1 +1,31 @@
+from load import User as User
 
+data_username = []
+for i in range(len(User)):
+    data_username.append(User[i][1])
+
+def register():
+
+    print("Pastikan username anda unik !")
+    nama = input("Masukkan nama: ")
+    username = input("Masukkan username: ")
+
+    while Is_Available(username,User) == False :
+        print("Username " + username +" Sudah Terpakai! Silahkan Gunakan Username Lain !")
+        username = input("Masukkan username baru: ")
+    
+    password = input("Masukkan password: ")
+    alamat = input("Masukkan alamat: ")
+    data_baru = [str(len(User)), username, nama, alamat, password, 'user']
+    User.append(data_baru)
+    print("Selamat User " + username +" Berhasil Terdaftarkan ke Kantong Ajaib !")
+
+
+def Is_Available(username,User):
+    Bool = True
+    for i in range(len(User)):
+        if username == data_username[i]:
+            Bool = False
+    return Bool
+
+register()

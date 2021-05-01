@@ -1,27 +1,29 @@
-from load import User as User
+from load import User as User  # Memanggil variabel User dari load sebagai User pada file ini
 
-data_username = []
-for i in range(len(User)):
+data_username = [] # Inisiasi list kosong
+for i in range(len(User)):  # Mengisi list dengan data usernama milik user dari variabel User
     data_username.append(User[i][1])
 
-def register():
+def register():  # Prosedur register
 
-    print("Pastikan username anda unik !")
+    print("Pastikan username anda unik !") # Pesan peringatakan untuk user
     nama = input("Masukkan nama: ")
     username = input("Masukkan username: ")
 
-    while Is_Available(username,User) == False :
-        print("Username " + username +" Sudah Terpakai! Silahkan Gunakan Username Lain !")
-        username = input("Masukkan username baru: ")
-    
+    while Is_Available(username,User) == False : # Apabila username yang diinput tidak unik (sudah ada pada data_username), meminta input hingga unik
+        print("Username " + username +" Sudah Terpakai! Silahkan Gunakan Username Lain !") 
+        username = input("Masukkan username baru: ") 
+
+    # username yang diinput user sudah unik 
     password = input("Masukkan password: ")
     alamat = input("Masukkan alamat: ")
-    data_baru = [str(len(User)), username, nama, alamat, password, 'user']
-    User.append(data_baru)
+    data_baru = [str(len(User)), username, nama, alamat, password, 'user']  # Menyimpan data-data baru dalam list data_baru
+    User.append(data_baru)  # Menambahkan data baru yang ada di data_baru ke variabel User
+    print()
     print("Selamat User " + username +" Berhasil Terdaftarkan ke Kantong Ajaib !")
 
 
-def Is_Available(username,User):
+def Is_Available(username,User):  # fungsi untuk memeriksa apakah username yang diinput sudah ada pada data_username
     Bool = True
     for i in range(len(User)):
         if username == data_username[i]:
